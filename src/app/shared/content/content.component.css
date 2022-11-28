@@ -1,0 +1,38 @@
+.container {
+   margin: 0px auto;
+}
+
+@media (min-width: 1903px) {
+   .container {
+      width: 75%;
+      padding: 70px 0px;
+   }
+}
+
+@media (min-width: 1263px) and (max-width: 1903px) {
+   .container {
+      width: 80%;
+      padding: 60px 0px;
+   }
+}
+
+@media (min-width: 959px) and (max-width: 1263px) {
+   .container {
+      width: 85%;
+      padding: 60px 0px;
+   }
+}
+
+@media (min-width: 599px) and (max-width: 959px) {
+   .container {
+      width: 85%;
+      padding: 50px 0px;
+   }
+}
+
+@media (max-width: 599px) {
+   .container {
+      width: 90%;
+      padding: 50px 0px;
+   }
+}

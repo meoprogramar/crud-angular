@@ -1,0 +1,61 @@
+<div class="container-dialog">
+   <h2 *ngIf="!editing" class="display-1">Cadastrar paciente</h2>
+   <h2 *ngIf="editing" class="display-1">Editar paciente</h2>
+
+   <div class="container-inputs">
+      <mat-form-field class="inputs-width" appearance="fill">
+         <mat-label>Nome</mat-label>
+         <input matInput [(ngModel)]="data.name" />
+      </mat-form-field>
+
+      <mat-form-field class="inputs-width" appearance="fill">
+         <mat-label>CPF</mat-label>
+         <input matInput [(ngModel)]="data.cpf" />
+      </mat-form-field>
+
+      <mat-form-field class="inputs-width" appearance="fill">
+         <mat-label>Telefone</mat-label>
+         <input matInput [(ngModel)]="data.phone" />
+      </mat-form-field>
+
+      <mat-form-field class="inputs-width" appearance="fill">
+         <mat-label>Nascimento</mat-label>
+         <input matInput [(ngModel)]="data.birth_date" />
+      </mat-form-field>
+
+      <mat-form-field class="inputs-width" appearance="fill">
+         <mat-label>Select</mat-label>
+         <mat-select [(value)]="data.gender">
+            <mat-option value="male">Masculino</mat-option>
+            <mat-option value="female">Feminino</mat-option>
+         </mat-select>
+      </mat-form-field>
+   </div>
+
+   <div class="container-actions">
+      <button (click)="onCancel()" class="button-actions" mat-button>
+         Cancelar
+      </button>
+
+      <button
+         *ngIf="!editing"
+         [mat-dialog-close]="data"
+         class="button-actions"
+         color="primary"
+         mat-flat-button
+         cdkFocusInitial
+      >
+         Cadastrar
+      </button>
+      <button
+         *ngIf="editing"
+         [mat-dialog-close]="data"
+         class="button-actions"
+         color="primary"
+         mat-flat-button
+         cdkFocusInitial
+      >
+         Salvar
+      </button>
+   </div>
+</div>

@@ -1,0 +1,21 @@
+.container-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   margin-bottom: 15px;
+}
+
+.container-table {
+   border: 1px solid rgba(0, 0, 0, 0.12);
+   border-radius: 7px;
+}
+
+table {
+   overflow: hidden;
+   border-radius: 7px;
+}
+
+th {
+   background-color: #f7f7f7 !important;
+}

@@ -1,0 +1,23 @@
+.container-dialog {
+   padding: 25px 30px !important;
+}
+
+.container-inputs {
+   padding-top: 20px;
+   padding-bottom: 5px;
+}
+
+.inputs-width {
+   display: block;
+}
+
+.container-actions {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   margin: -4px;
+}
+
+.button-actions {
+   margin: 4px;
+}
