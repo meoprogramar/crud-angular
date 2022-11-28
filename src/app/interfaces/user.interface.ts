@@ -1,4 +1,4 @@
-export interface Patient {
+export interface User {
    id?: string;
    created_at?: string;
    updated_at?: string;
@@ -9,10 +9,8 @@ export interface Patient {
    birth_date: string;
    phone: string;
    email?: string;
-   gender: string;
    rg?: string;
    address?: Object;
-   health_entities?: string[];
    last_login?: Date;
    active?: boolean;
    is_authorized?: boolean;

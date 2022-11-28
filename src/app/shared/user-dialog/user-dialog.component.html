@@ -1,6 +1,6 @@
 <div class="container-dialog">
-   <h2 *ngIf="!editing" class="display-1">Cadastrar paciente</h2>
-   <h2 *ngIf="editing" class="display-1">Editar paciente</h2>
+   <h2 *ngIf="!editing" class="display-1">Cadastrar usuário</h2>
+   <h2 *ngIf="editing" class="display-1">Editar usuário</h2>
 
    <div class="container-inputs">
       <mat-form-field class="inputs-width" appearance="fill">
@@ -21,14 +21,6 @@
       <mat-form-field class="inputs-width" appearance="fill">
          <mat-label>Nascimento</mat-label>
          <input matInput [(ngModel)]="data.birth_date" />
-      </mat-form-field>
-
-      <mat-form-field class="inputs-width" appearance="fill">
-         <mat-label>Select</mat-label>
-         <mat-select [(value)]="data.gender">
-            <mat-option value="male">Masculino</mat-option>
-            <mat-option value="female">Feminino</mat-option>
-         </mat-select>
       </mat-form-field>
    </div>
 

@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
 
 import { Page404Component } from './views/page404/page404.component';
 import { ContentComponent } from './shared/content/content.component';
-import { PatientDialogComponent } from './shared/patient-dialog/patient-dialog.component';
+import { UserDialogComponent } from './shared/user-dialog/user-dialog.component';
 
 @NgModule({
    declarations: [
@@ -30,7 +30,7 @@ import { PatientDialogComponent } from './shared/patient-dialog/patient-dialog.c
       FooterComponent,
       Page404Component,
       ContentComponent,
-      PatientDialogComponent,
+      UserDialogComponent,
    ],
    imports: [
       BrowserModule,
