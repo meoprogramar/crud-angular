@@ -11,9 +11,22 @@
    border-radius: 7px;
 }
 
+.container-content-table {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 40px;
+}
+
+.container-content-table-label {
+   margin-top: 20px;
+}
+
 table {
    overflow: hidden;
-   border-radius: 7px;
+   border-top-right-radius: 7px;
+   border-top-left-radius: 7px;
 }
 
 th {

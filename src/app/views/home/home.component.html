@@ -50,17 +50,26 @@
          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
 
-      <div
-         *ngIf="loadingUsers"
-         style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-         "
-      >
-         <mat-progress-spinner color="primary" mode="indeterminate">
+      <div *ngIf="loadingUsers; else noData" class="container-content-table">
+         <mat-progress-spinner
+            color="primary"
+            mode="indeterminate"
+            strokeWidth="4"
+            diameter="80"
+         >
          </mat-progress-spinner>
+
+         <span class="container-content-table-label">Carregando...</span>
       </div>
+
+      <ng-template #noData>
+         <div class="container-content-table">
+            <img src="assets/images/empty-folder.png" height="90" />
+
+            <span class="container-content-table-label"
+               >Nenhum dado encontrado...</span
+            >
+         </div>
+      </ng-template>
    </div>
 </div>
