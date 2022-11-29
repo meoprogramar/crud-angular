@@ -2,85 +2,100 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { lastValueFrom } from 'rxjs';
-import { User } from 'src/app/models/user';
-import { UserService } from 'src/app/services/user.service';
-import { UserDialogComponent } from 'src/app/shared/user-dialog/user-dialog.component';
+import { Post } from 'src/app/models/post';
+import { PostService } from 'src/app/services/post.service';
+import { PostDialogComponent } from 'src/app/shared/post-dialog/post-dialog.component';
 
 @Component({
    selector: 'app-home',
    templateUrl: './home.component.html',
    styleUrls: ['./home.component.css'],
-   providers: [UserService],
+   providers: [PostService],
 })
 export class HomeComponent {
    @ViewChild(MatTable)
    table!: MatTable<any>;
-   displayedColumns: string[] = [
-      'name',
-      'cpf',
-      'phone',
-      'birth_date',
-      'actions',
-   ];
-   users!: User[];
-   loadingUsers: boolean = false;
+   displayedColumns: string[] = ['id', 'title', 'actions'];
+   posts!: Post[];
+   loadingPosts: boolean = false;
 
-   constructor(public dialog: MatDialog, public userService: UserService) {
-      this.loadUsers();
+   constructor(public dialog: MatDialog, public postService: PostService) {
+      this.loadPosts();
    }
 
-   async loadUsers() {
-      this.loadingUsers = true;
-      this.users = [];
+   async loadPosts() {
+      this.loadingPosts = true;
+      this.posts = [];
 
       try {
-         this.users = await lastValueFrom(this.userService.getAll());
+         this.posts = await lastValueFrom(this.postService.getAll());
+         this.posts = this.posts.slice(0, 5); /* Limita em 10 items */
       } catch (error) {
          console.log('Error');
       } finally {
-         this.loadingUsers = false;
+         this.loadingPosts = false;
       }
    }
 
-   createUser() {
-      const dialogRef = this.dialog.open(UserDialogComponent, {
+   createPost() {
+      const dialogRef = this.dialog.open(PostDialogComponent, {
          width: '500px',
          data: {
-            name: '',
-            cpf: '',
-            birth_date: '',
-            phone: '',
+            userId: 1,
+            title: '',
+            body: '',
          },
       });
 
-      dialogRef.afterClosed().subscribe((result) => {
+      dialogRef.afterClosed().subscribe(async (result: Post) => {
          if (result) {
-            this.users.push(result);
-            this.table.renderRows();
+            let postAdded: Post;
+
+            try {
+               postAdded = await lastValueFrom(this.postService.add(result));
+               this.posts.push(postAdded);
+               this.table.renderRows();
+            } catch (error) {
+               console.log('Error');
+            }
          }
       });
    }
 
-   editUser(user: User) {
-      const dialogRef = this.dialog.open(UserDialogComponent, {
+   editPost(post: Post) {
+      const dialogRef = this.dialog.open(PostDialogComponent, {
          width: '500px',
-         data: Object.assign({}, user),
+         data: Object.assign({}, post),
       });
 
-      dialogRef.afterClosed().subscribe((result) => {
+      dialogRef.afterClosed().subscribe(async (result: Post) => {
          if (result) {
-            const userIndex = this.users.findIndex(
-               (item) => item.id === user.id
-            );
-            this.users[userIndex] = result;
-            this.table.renderRows();
+            let postUpdated: Post;
+
+            try {
+               postUpdated = await lastValueFrom(
+                  this.postService.update(result, post.id)
+               );
+               const postIndex = this.posts.findIndex(
+                  (item) => item.id === postUpdated.id
+               );
+               this.posts[postIndex] = postUpdated;
+               this.table.renderRows();
+            } catch (error) {
+               console.log('Error');
+            }
          }
       });
    }
 
-   deleteUser(user: User) {
-      const userIndex = this.users.findIndex((item) => item.id === user.id);
-      this.users.splice(userIndex, 1);
-      this.table.renderRows();
+   async deletePost(post: Post) {
+      try {
+         await lastValueFrom(this.postService.remove(post.id || -1));
+         const postIndex = this.posts.findIndex((item) => item.id === post.id);
+         this.posts.splice(postIndex, 1);
+         this.table.renderRows();
+      } catch (error) {
+         console.log('Error');
+      }
    }
 }

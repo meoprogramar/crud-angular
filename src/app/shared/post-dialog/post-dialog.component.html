@@ -1,26 +1,20 @@
 <div class="container-dialog">
-   <h2 *ngIf="!editing" class="display-1">Cadastrar usuário</h2>
-   <h2 *ngIf="editing" class="display-1">Editar usuário</h2>
+   <h2 *ngIf="!editing" class="display-1">Cadastrar post</h2>
+   <h2 *ngIf="editing" class="display-1">Editar post</h2>
 
    <div class="container-inputs">
       <mat-form-field class="inputs-width" appearance="fill">
-         <mat-label>Nome</mat-label>
-         <input matInput [(ngModel)]="data.name" />
+         <mat-label>Título</mat-label>
+         <input matInput [(ngModel)]="data.title" />
       </mat-form-field>
 
       <mat-form-field class="inputs-width" appearance="fill">
-         <mat-label>CPF</mat-label>
-         <input matInput [(ngModel)]="data.cpf" />
-      </mat-form-field>
-
-      <mat-form-field class="inputs-width" appearance="fill">
-         <mat-label>Telefone</mat-label>
-         <input matInput [(ngModel)]="data.phone" />
-      </mat-form-field>
-
-      <mat-form-field class="inputs-width" appearance="fill">
-         <mat-label>Nascimento</mat-label>
-         <input matInput [(ngModel)]="data.birth_date" />
+         <mat-label>Descrição</mat-label>
+         <textarea
+            matInput
+            [(ngModel)]="data.body"
+            cdkTextareaAutosize
+         ></textarea>
       </mat-form-field>
    </div>
 

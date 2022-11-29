@@ -25,8 +25,7 @@
 
 table {
    overflow: hidden;
-   border-top-right-radius: 7px;
-   border-top-left-radius: 7px;
+   border-radius: 7px;
 }
 
 th {

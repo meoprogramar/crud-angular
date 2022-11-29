@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
-import { Page404Component } from './views/page404/page404.component';
 
 const routes: Routes = [
    {

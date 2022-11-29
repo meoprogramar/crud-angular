@@ -19,11 +19,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 
-import { Page404Component } from './views/page404/page404.component';
 import { ContentComponent } from './shared/content/content.component';
-import { UserDialogComponent } from './shared/user-dialog/user-dialog.component';
+import { PostDialogComponent } from './shared/post-dialog/post-dialog.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ApiInterceptor } from './interceptors/api.interceptor';
 
 @NgModule({
@@ -32,9 +30,8 @@ import { ApiInterceptor } from './interceptors/api.interceptor';
       HomeComponent,
       HeaderComponent,
       FooterComponent,
-      Page404Component,
       ContentComponent,
-      UserDialogComponent,
+      PostDialogComponent,
    ],
    imports: [
       BrowserModule,
@@ -54,11 +51,6 @@ import { ApiInterceptor } from './interceptors/api.interceptor';
       FormsModule,
    ],
    providers: [
-      {
-         provide: HTTP_INTERCEPTORS,
-         useClass: AuthInterceptor,
-         multi: true,
-      },
       {
          provide: HTTP_INTERCEPTORS,
          useClass: ApiInterceptor,

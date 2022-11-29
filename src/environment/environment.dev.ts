@@ -1,4 +1,4 @@
 export const environment = {
    production: false,
-   apiUrl: 'https://api.regnutes.tk/v1',
+   apiUrl: 'https://jsonplaceholder.typicode.com',
 };

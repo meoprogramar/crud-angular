@@ -1,20 +1,20 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { User } from 'src/app/models/user';
+import { Post } from 'src/app/models/post';
 
 @Component({
-   selector: 'app-user-dialog',
-   templateUrl: './user-dialog.component.html',
-   styleUrls: ['./user-dialog.component.css'],
+   selector: 'app-post-dialog',
+   templateUrl: './post-dialog.component.html',
+   styleUrls: ['./post-dialog.component.css'],
 })
-export class UserDialogComponent implements OnInit {
-   user!: User;
+export class PostDialogComponent implements OnInit {
+   post!: Post;
    editing!: boolean;
 
    constructor(
       @Inject(MAT_DIALOG_DATA)
-      public data: User,
-      public dialogRef: MatDialogRef<UserDialogComponent>
+      public data: Post,
+      public dialogRef: MatDialogRef<PostDialogComponent>
    ) {}
 
    ngOnInit(): void {
